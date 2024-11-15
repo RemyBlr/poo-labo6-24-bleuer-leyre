@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="Calculatrice">
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="55172" name="next &gt;">
+      <role componentId="54002" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="54002" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
     <inheritance id="53750">
       <child>53747</child>
       <parent>53173</parent>
@@ -72,6 +86,10 @@
     <inheritance id="53799">
       <child>53769</child>
       <parent>53745</parent>
+    </inheritance>
+    <inheritance id="54003" innerClass="true">
+      <child>54002</child>
+      <parent>53145</parent>
     </inheritance>
     <association aggregation="NONE" direction="BIDIRECTIONAL" id="53193" name="contient v">
       <role componentId="53136" name="" visibility="PRIVATE">
@@ -153,12 +171,16 @@
       <attribute const="false" defaultValue="" isStatic="false" name="error" type="boolean" visibility="PRIVATE"/>
     </entity>
     <entity entityType="CLASS" id="53145" isAbstract="false" name="Stack&lt;T&gt;" visibility="PUBLIC">
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Stack&lt;T&gt;" returnType="" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="isEmpty" returnType="boolean" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="size" returnType="int" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="push" returnType="void" view="DEFAULT" visibility="PUBLIC">
-        <variable const="false" name="item" type="T"/>
+        <variable const="false" name="data" type="T"/>
       </method>
       <method isAbstract="false" isStatic="false" name="pop" returnType="T" view="DEFAULT" visibility="PUBLIC"/>
-      <method isAbstract="false" isStatic="false" name="iterator" returnType="Iterator&lt;T&gt;" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="toString" returnType="String" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="toArray" returnType="T[]" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="getIterator" returnType="node&lt;T&gt;" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="53146" isAbstract="false" name="JButton" visibility="PUBLIC">
       <method isAbstract="false" isStatic="false" name="actionPerformed" returnType="void" view="DEFAULT" visibility="PUBLIC">
@@ -198,6 +220,18 @@
     <entity entityType="CLASS" id="53773" isAbstract="false" name="Square" visibility="PUBLIC"/>
     <entity entityType="CLASS" id="53778" isAbstract="false" name="Reciprocal" visibility="PUBLIC"/>
     <entity entityType="CLASS" id="53779" isAbstract="false" name="ChangeSign" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="54002" isAbstract="false" name="Node" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="data" type="T" visibility="PRIVATE"/>
+      <method is-constructor="true" isAbstract="false" isStatic="false" name="Node" returnType="" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="data" type="T"/>
+        <variable const="false" name="next" type="Node"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="setNext" returnType="Node" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="next" type="int"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="hasNext" returnType="boolean" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="next" returnType="T" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
   </diagramElements>
   <umlView grid="10" name="Main view" open="true">
     <relationView color="-12566464" relationId="53252">
@@ -291,12 +325,12 @@
           <y>161</y>
         </point>
         <point>
-          <x>771</x>
+          <x>821</x>
           <y>161</y>
         </point>
       </line>
       <labelAssociation>
-        <x>687</x>
+        <x>712</x>
         <y>164</y>
         <w>57</w>
         <h>16</h>
@@ -308,7 +342,7 @@
         <h>16</h>
       </roleAssociation>
       <roleAssociation>
-        <x>765</x>
+        <x>815</x>
         <y>165</y>
         <w>0</w>
         <h>16</h>
@@ -320,7 +354,7 @@
         <h>16</h>
       </multipliciteAssociation>
       <multipliciteAssociation>
-        <x>757</x>
+        <x>807</x>
         <y>139</y>
         <w>8</w>
         <h>16</h>
@@ -409,6 +443,18 @@
         <w>22</w>
         <h>16</h>
       </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="54003">
+      <line>
+        <point>
+          <x>1061</x>
+          <y>291</y>
+        </point>
+        <point>
+          <x>1011</x>
+          <y>291</y>
+        </point>
+      </line>
     </relationView>
     <relationView color="-12566464" relationId="53799">
       <line>
@@ -762,6 +808,68 @@
         </point>
       </line>
     </relationView>
+    <relationView color="-12566464" relationId="55172">
+      <line>
+        <point>
+          <x>1201</x>
+          <y>391</y>
+        </point>
+        <point>
+          <x>1201</x>
+          <y>421</y>
+        </point>
+        <point>
+          <x>1251</x>
+          <y>421</y>
+        </point>
+        <point>
+          <x>1251</x>
+          <y>371</y>
+        </point>
+        <point>
+          <x>1211</x>
+          <y>371</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>1214</x>
+        <y>424</y>
+        <w>40</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>1205</x>
+        <y>395</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>1215</x>
+        <y>375</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>1187</x>
+        <y>395</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>1215</x>
+        <y>349</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <componentView color="-2079" componentID="54002" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>1060</x>
+        <y>260</y>
+        <w>150</w>
+        <h>130</h>
+      </geometry>
+    </componentView>
     <componentView color="-2079" componentID="53779" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>110</x>
@@ -924,10 +1032,10 @@
     </componentView>
     <componentView color="-2079" componentID="53145" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>770</x>
+        <x>820</x>
         <y>140</y>
-        <w>150</w>
-        <h>115</h>
+        <w>190</w>
+        <h>175</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="53144" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -946,5 +1054,23 @@
         <h>70</h>
       </geometry>
     </componentView>
+    <note color="-2079" content="CI: Node cannot be self next">
+      <noteGeometry>
+        <x>1260</x>
+        <y>280</y>
+        <w>100</w>
+        <h>60</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="54002">
+        <point>
+          <x>1261</x>
+          <y>281</y>
+        </point>
+        <point>
+          <x>1211</x>
+          <y>281</y>
+        </point>
+      </noteLine>
+    </note>
   </umlView>
 </classDiagram>
