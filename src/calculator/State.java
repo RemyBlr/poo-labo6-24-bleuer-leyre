@@ -4,13 +4,13 @@ import calculator.util.Stack;
 public class State {
     private String currentValue;
     private Stack<Double> stack;
-    //private Double memory;
+    private Double memory;
     private boolean error;
 
     public State() {
         this.currentValue = "0";
         this.stack = new Stack<>();
-        //this.memory = null;
+        this.memory = null;
         this.error = false;
     }
 
@@ -33,11 +33,25 @@ public class State {
         return stack.pop();
     }
 
+    public void storeMemory(double value) {
+        this.memory = value;
+    }
+
+    public Double recallMemory() {
+        return memory;
+    }
+
     public boolean isError() {
         return error;
     }
 
     public void setError(boolean error) {
         this.error = error;
+    }
+
+    public void clear() {
+        this.currentValue = "0";
+        this.stack = new Stack<>();
+        this.error = false;
     }
 }
