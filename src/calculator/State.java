@@ -1,6 +1,8 @@
 package calculator;
 import calculator.util.Stack;
 
+import java.util.Iterator;
+
 public class State {
     private String currentValue;
     private Stack<Double> stack;
@@ -33,6 +35,11 @@ public class State {
         return stack.pop();
     }
 
+    public Double[] getStackValues() {
+        Double[] a = new Double[stack.size()];
+        return stack.toArray(a);
+    }
+
     public void storeMemory(double value) {
         this.memory = value;
     }
@@ -53,5 +60,9 @@ public class State {
         this.currentValue = "0";
         this.stack = new Stack<>();
         this.error = false;
+    }
+
+    public Iterator<Double> getStackIterator() {
+        return stack.iterator();
     }
 }

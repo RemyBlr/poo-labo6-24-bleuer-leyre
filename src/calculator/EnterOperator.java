@@ -6,5 +6,16 @@ public class EnterOperator extends Operator {
     }
 
     @Override
-    public void execute() {}
+    public void execute() {
+        try {
+            String currentValue = state.getCurrentValue();
+            double value = Double.parseDouble(currentValue);
+            state.pushValue(value);
+            state.setCurrentValue("0");
+            state.setError(false);
+        } catch (NumberFormatException e) {
+            state.setError(true);
+            state.setCurrentValue("Error");
+        }
+    }
 }

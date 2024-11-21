@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +32,7 @@ public class JCalculator extends JFrame
   // Contraintes pour le placement des composants graphiques
   private final GridBagConstraints constraints = new GridBagConstraints();
 
-  private State state = new State();
+  private final State state = new State();
 
 
   // Mise a jour de l'interface apres une operation (jList et jStack)
@@ -37,6 +40,18 @@ public class JCalculator extends JFrame
   {
     // Modifier une zone de texte, JTextField.setText(string nom)
     // Modifier un composant liste, JList.setListData(Object[] tableau)
+
+    jNumber.setText(state.getCurrentValue());
+    Iterator<Double> iterator = state.getStackIterator();
+    if (!iterator.hasNext()) {
+      jStack.setListData(empty);
+    } else {
+      List<String> displayValues = new ArrayList<>();
+      while (iterator.hasNext()) {
+        displayValues.add(iterator.next().toString());
+      }
+      jStack.setListData(displayValues.toArray(new String[0]));
+    }
   }
 
   // Ajout d'un bouton dans l'interface et de l'operation associee,

@@ -10,7 +10,7 @@ public abstract class BinaryOperator extends Operator {
     void execute() {
         try {
             // pop two operands from stack
-            double op2 = state.popValue();
+            double op2 = Double.parseDouble(state.getCurrentValue());
             double op1 = state.popValue();
 
             // perform operation
