@@ -9,17 +9,18 @@ public class Stack<T> {
 
         private Node(T data, Node next) {
             this.data = data;
-            setNext(next);
+            this.next = next;
         }
 
-        private void setNext(Node next) {
+        // not correct way to set next, should be in Iterator
+        /*private void setNext(Node next) {
             if (next != this) {
                 this.next = next;
             }
             else {
                 throw new IllegalArgumentException("Node next cannot be ones self!");
             }
-        }
+        }*/
 
         public boolean hasNext() {
             return next != null;
@@ -54,7 +55,10 @@ public class Stack<T> {
     public void push(T data) {
         top = new Node(data, top);
     }
-    public T pop() {
+    public T pop() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Stack is empty");
+        }
         T data = top.data;
         top = top.next;
         return data;
@@ -74,23 +78,49 @@ public class Stack<T> {
         return str + "]";
     }
 
-    public T[] toArray() {
-        if (isEmpty()) {
-            return null;
-        }
+    public T[] toArray(T[] a) {
         int s = size();
-        //Might induce panic attacks :
-        T[] r = (T[]) Array.newInstance(top.data.getClass(), s);
+        if (a.length < s) {
+            // Create new array of same type with correct size
+            a = (T[]) Array.newInstance(a.getClass().getComponentType(), s);
+        }
         Node current = top;
         for (int i = 0; i < s; i++) {
-            r[i] = current.data;
+            a[i] = current.data;
             current = current.next;
         }
-        return r;
+        if (a.length > s) {
+            // Set next elem to null if array is larger
+            a[s] = null;
+        }
+        return a;
     }
 
     //is a node a good iterator?
     public Node getIterator() {
         return top;
+    }
+
+    public java.util.Iterator<T> iterator() {
+        return new Iterator();
+    }
+
+    private class Iterator implements java.util.Iterator<T> {
+        private Node current = top;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException();
+            }
+            T data = current.data;
+            current = current.next;
+            return data;
+        }
     }
 }
