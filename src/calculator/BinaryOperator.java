@@ -16,14 +16,14 @@ public abstract class BinaryOperator extends Operator {
             // perform operation
             double result = operate(op1, op2);
 
-            // push result back to stack
-            state.pushValue(result);
-
             // update current value
             state.setCurrentValue(Double.toString(result));
 
             // clear error state
             state.setError(false);
+
+            // set flag to indicate last action was operation
+            state.setIsOperationPerformed(true);
         } catch (Exception e) {
             // set error state
             state.setError(true);

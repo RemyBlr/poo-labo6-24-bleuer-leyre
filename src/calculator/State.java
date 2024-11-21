@@ -8,12 +8,16 @@ public class State {
     private Stack<Double> stack;
     private Double memory;
     private boolean error;
+    private boolean isOperationPerformed;
+
 
     public State() {
         this.currentValue = "0";
         this.stack = new Stack<>();
         this.memory = null;
         this.error = false;
+        this.isOperationPerformed = false;
+
     }
 
     public String getCurrentValue() {
@@ -64,5 +68,13 @@ public class State {
 
     public Iterator<Double> getStackIterator() {
         return stack.iterator();
+    }
+
+    public boolean isOperationPerformed() {
+        return isOperationPerformed;
+    }
+
+    public void setIsOperationPerformed(boolean value) {
+        this.isOperationPerformed = value;
     }
 }

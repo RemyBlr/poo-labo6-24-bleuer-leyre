@@ -13,6 +13,7 @@ public class EnterOperator extends Operator {
             state.pushValue(value);
             state.setCurrentValue("0");
             state.setError(false);
+            state.setIsOperationPerformed(false);
         } catch (NumberFormatException e) {
             state.setError(true);
             state.setCurrentValue("Error");
