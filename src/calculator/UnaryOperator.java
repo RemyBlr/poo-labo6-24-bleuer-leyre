@@ -1,25 +1,23 @@
 package calculator;
 
-
-public abstract class BinaryOperator extends Operator {
-    public BinaryOperator(State state) {
+public abstract class UnaryOperator extends Operator {
+    public UnaryOperator(State state) {
         super(state);
     }
 
     @Override
     void execute() {
         try {
-            // pop one operand from stack
-            double op2 = Double.parseDouble(state.getCurrentValue());
-            double op1 = state.popValue();
+            // get current value
+            double operand = Double.parseDouble(state.getCurrentValue());
 
-            // perform operation
-            double result = operate(op1, op2);
+            // do operation
+            double result = operate(operand);
 
             // update current value
             state.setCurrentValue(Double.toString(result));
 
-            // clear error state
+            // reset error state
             state.setError(false);
 
             // set flag to indicate last action was operation
@@ -31,5 +29,5 @@ public abstract class BinaryOperator extends Operator {
         }
     }
 
-    protected abstract double operate(double a, double b);
+    protected abstract double operate(double operand);
 }

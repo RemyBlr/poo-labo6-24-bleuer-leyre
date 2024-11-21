@@ -66,6 +66,11 @@ public class State {
         this.error = false;
     }
 
+    public void clearEntry() {
+        this.currentValue = "0";
+        this.error = false;
+    }
+
     public Iterator<Double> getStackIterator() {
         return stack.iterator();
     }
