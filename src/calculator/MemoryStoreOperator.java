@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * MemoryStore operator (MS) - stores the current operand in memory.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see UnaryOperator
+ */
 public class MemoryStoreOperator extends UnaryOperator {
     public MemoryStoreOperator(State state) {
         super(state);

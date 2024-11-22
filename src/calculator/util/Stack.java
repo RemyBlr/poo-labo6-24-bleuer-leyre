@@ -1,7 +1,17 @@
 package calculator.util;
 
-import java.lang.reflect.Array;
+import calculator.BinaryOperator;
 
+import java.lang.reflect.Array;
+import java.util.NoSuchElementException;
+
+/**
+ * A stack implementation.
+ * The stack allows to push and pop elements of type T.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ */
 public class Stack<T> {
     public class Node{
         private Node next;
@@ -116,7 +126,7 @@ public class Stack<T> {
         @Override
         public T next() {
             if (!hasNext()) {
-                throw new java.util.NoSuchElementException();
+                throw new NoSuchElementException("No more elements in stack");
             }
             T data = current.data;
             current = current.next;

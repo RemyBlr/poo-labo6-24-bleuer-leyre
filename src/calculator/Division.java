@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Division operator (/) - divides the stack's top operand by the current operand.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see BinaryOperator
+ */
 public class Division extends BinaryOperator {
     public Division(State state) {
         super(state);

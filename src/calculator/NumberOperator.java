@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Number operator (0-9) - appends the digit to the current operand.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see Operator
+ */
 public class NumberOperator extends Operator {
     private String digit;
 
