@@ -41,16 +41,23 @@ public class JCalculator extends JFrame
     // Modifier une zone de texte, JTextField.setText(string nom)
     // Modifier un composant liste, JList.setListData(Object[] tableau)
 
+    // display current value
     jNumber.setText(state.getCurrentValue());
-    Iterator<Double> iterator = state.getStackIterator();
-    if (!iterator.hasNext()) {
+    // get stack values
+    Double[] stackValues = state.getStackValues();
+
+    if (stackValues.length == 0) {
+      // list component is empty
       jStack.setListData(empty);
     } else {
-      List<String> displayValues = new ArrayList<>();
-      while (iterator.hasNext()) {
-        displayValues.add(iterator.next().toString());
+      // convert Double[] to String[]
+      String[] displayValues = new String[stackValues.length];
+      for (int i = 0; i < stackValues.length; i++) {
+        // display values as strings
+        displayValues[i] = stackValues[i].toString();
       }
-      jStack.setListData(displayValues.toArray(new String[0]));
+      // update list component
+      jStack.setListData(displayValues);
     }
   }
 

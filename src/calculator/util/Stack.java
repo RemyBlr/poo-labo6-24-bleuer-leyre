@@ -111,7 +111,7 @@ public class Stack<T> {
         return top;
     }
 
-    public java.util.Iterator<T> iterator() {
+    /*public java.util.Iterator<T> iterator() {
         return new Iterator();
     }
 
@@ -132,5 +132,5 @@ public class Stack<T> {
             current = current.next;
             return data;
         }
-    }
+    }*/
 }

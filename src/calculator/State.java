@@ -139,10 +139,6 @@ public class State {
         this.isOperationPerformed = false;
     }
 
-    public Iterator<Double> getStackIterator() {
-        return stack.iterator();
-    }
-
     /**
      * Get the isOperationPerformed flag.
      *
