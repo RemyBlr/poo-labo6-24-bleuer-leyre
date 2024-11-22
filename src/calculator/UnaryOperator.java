@@ -1,5 +1,13 @@
 package calculator;
 
+/**
+ * Abstract class for unary operators.
+ * Unary operators are operators that only require one operand.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see Operator
+ */
 public abstract class UnaryOperator extends Operator {
     public UnaryOperator(State state) {
         super(state);
@@ -29,5 +37,11 @@ public abstract class UnaryOperator extends Operator {
         }
     }
 
+    /**
+     * Perform the operation on the operand.
+     *
+     * @param operand the operand to perform the operation on
+     * @return the result of the operation
+     */
     protected abstract double operate(double operand);
 }

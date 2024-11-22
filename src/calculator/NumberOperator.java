@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Number operator (0-9) - appends the digit to the current operand.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see Operator
+ */
 public class NumberOperator extends Operator {
     private String digit;
 
@@ -11,6 +18,14 @@ public class NumberOperator extends Operator {
     @Override
     public void execute() {
 
+        // reset current value if error
+        if(state.isError()) {
+            state.clearEntry();
+            // don't want to push 0 to stack if error
+            state.setIsOperationPerformed(false);
+        }
+
+        // if operation is performed, start new currentValue
         if (state.isOperationPerformed()) {
             // push currentValue to stack
             double value = Double.parseDouble(state.getCurrentValue());
@@ -22,6 +37,7 @@ public class NumberOperator extends Operator {
             return;
         }
 
+        // check if current vvalue exists
         String currentVal = state.getCurrentValue();
         if (currentVal.equals("0")) {
             state.setCurrentValue(digit);

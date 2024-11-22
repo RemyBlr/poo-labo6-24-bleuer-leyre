@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Addition operator (+) - adds the stack's top operand to the current operand.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see BinaryOperator
+ */
 public class Addition extends BinaryOperator {
     public Addition(State state) {
         super(state);

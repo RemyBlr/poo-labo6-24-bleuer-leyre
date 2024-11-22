@@ -1,5 +1,13 @@
 package calculator;
 
+/**
+ * Abstract class for binary operators.
+ * Binary operators are operators that require two operands to perform an operation.
+ *
+ * @author Arnaut Leyre
+ * @author Rémy Bleuer
+ * @see Operator
+ */
 
 public abstract class BinaryOperator extends Operator {
     public BinaryOperator(State state) {
@@ -9,7 +17,7 @@ public abstract class BinaryOperator extends Operator {
     @Override
     void execute() {
         try {
-            // pop one operand from stack
+            // pop one operand from stack and other from current value
             double op2 = Double.parseDouble(state.getCurrentValue());
             double op1 = state.popValue();
 
@@ -31,5 +39,12 @@ public abstract class BinaryOperator extends Operator {
         }
     }
 
+    /**
+     * Perform the operation on the operands.
+     *
+     * @param a the first operand
+     * @param b the second operand
+     * @return the result of the operation
+     */
     protected abstract double operate(double a, double b);
 }
