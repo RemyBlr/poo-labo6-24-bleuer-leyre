@@ -1,8 +1,6 @@
 package calculator;
 import calculator.util.Stack;
 
-import java.util.Iterator;
-
 /**
  * The state of the calculator.
  * It contains the current value, the stack, the memory, the error state.
@@ -68,10 +66,7 @@ public class State {
      * @return the value popped from the stack
      * @throws Exception if the stack is empty
      */
-    public double popValue() throws Exception {
-        if (stack.isEmpty()) {
-            throw new Exception("Stack is empty");
-        }
+    public double popValue() throws RuntimeException {
         return stack.pop();
     }
 
@@ -83,6 +78,15 @@ public class State {
     public Double[] getStackValues() {
         Double[] a = new Double[stack.size()];
         return stack.toArray(a);
+    }
+
+    /**
+     * Get stack as String.
+     *
+     * @return String with format : "e0 e1 ... eN" or "<empty stack>"
+     */
+    public String stackToString(){
+        return stack.toString();
     }
 
     /**
@@ -128,6 +132,7 @@ public class State {
         this.currentValue = "0";
         this.stack = new Stack<>();
         this.error = false;
+        this.isOperationPerformed = false;
     }
 
     /**

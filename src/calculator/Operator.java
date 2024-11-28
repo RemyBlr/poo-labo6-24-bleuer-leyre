@@ -1,5 +1,4 @@
 package calculator;
-import calculator.State;
 
 /**
  * Operator is an abstract class that represents an operator in the calculator.

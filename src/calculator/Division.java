@@ -14,6 +14,10 @@ public class Division extends BinaryOperator {
 
     @Override
     protected double operate(double op1, double op2) {
+        // can't divide by zero
+        if (op2 == 0) {
+            throw new ArithmeticException("Error : division by zero");
+        }
         return op1 / op2;
     }
 }

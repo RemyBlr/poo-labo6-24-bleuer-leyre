@@ -8,7 +8,7 @@ package calculator;
  * @see Operator
  */
 public class NumberOperator extends Operator {
-    private String digit;
+    private final String digit;
 
     public NumberOperator(State state, String digit) {
         super(state);
@@ -37,7 +37,7 @@ public class NumberOperator extends Operator {
             return;
         }
 
-        // check if current vvalue exists
+        // check if current value exists
         String currentVal = state.getCurrentValue();
         if (currentVal.equals("0")) {
             state.setCurrentValue(digit);

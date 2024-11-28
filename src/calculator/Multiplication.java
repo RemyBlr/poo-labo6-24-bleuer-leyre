@@ -1,7 +1,7 @@
 package calculator;
 
 /**
- * Multilication operator (*) - multiplies the stack's top operand with the current operand.
+ * Multiplication operator (*) - multiplies the stack's top operand with the current operand.
  *
  * @author Arnaut Leyre
  * @author Rémy Bleuer
